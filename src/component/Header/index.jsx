@@ -12,7 +12,7 @@ const Header = ({ setCreateTask }) => {
   return (
     <Bar>
       <Bar.Logo>
-        <img src={Logo} alt="Ballerini-Logo"></img>
+        <img src={Logo} alt="Todo-Logo"></img>
         Ubistart To Do
       </Bar.Logo>
       <Bar.Add>

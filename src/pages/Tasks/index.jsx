@@ -63,8 +63,9 @@ const Tasks = ({ openCreateTasks, setCreateTask }) => {
 
   useEffect(async () => {
     const response = await api.listTodos(3, from);
+    console.log(response);
     setCount(response.data.count);
-    setTasks(response.data.list || []);
+    setTasks(response.data.tasks || []);
   }, [open, from]);
 
   return (

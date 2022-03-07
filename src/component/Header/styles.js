@@ -19,8 +19,19 @@ Bar.Logo = styled(Bar.Align)`
   font-weight: 1000;
   color: #fff;
 
-  width: 15%;
+  width: 20%;
   font-size: 1.5em;
+  @media (max-width: 1300px) {
+    width: 30%;
+    font-size: 1.2em;
+  }
+  @media (max-width: 1050px) {
+    font-size: 1.1em;
+  }
+  @media (max-width: 950px) {
+    font-size: 1em;
+    width: 40%;
+  }
   > img {
     height: 40%;
     width: 40%;

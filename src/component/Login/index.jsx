@@ -17,7 +17,7 @@ const Register = ({ close }) => {
     setLoading(true);
     await new Promise((r) => setTimeout(r, 2000));
 
-    if (email && password) {
+    if (email && password && email.split("").includes("@")) {
       const response = await api.login({ email, password });
       if (response.status == 200) {
         localStorage.setItem("Authorization", `Bearer ${response.data.token}`);
@@ -25,10 +25,10 @@ const Register = ({ close }) => {
         navigate("/home");
         return;
       }
-      return;
     }
     setValidate(false);
     setLoading(false);
+    return;
   };
 
   return (
@@ -38,13 +38,19 @@ const Register = ({ close }) => {
       <Container.Inputs>
         <Input
           validate={validate}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            setValidate(true);
+            setEmail(e.target.value);
+          }}
           placeholder="Email"
         ></Input>
         <Input
           validate={validate}
           type="password"
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => {
+            setValidate(true);
+            setPassword(e.target.value);
+          }}
           placeholder="Passoword"
         ></Input>
       </Container.Inputs>

@@ -19,7 +19,13 @@ const Register = () => {
   const signUp = async () => {
     setLoading(true);
     await new Promise((r) => setTimeout(r, 2000));
-    if (name && email && password && password == cPassword) {
+    if (
+      name &&
+      email &&
+      password &&
+      password == cPassword &&
+      email.split("").includes("@")
+    ) {
       const response = await api.register({ name, email, password });
       if (response.status == 201) {
         localStorage.setItem("Authorization", `Bearer ${response.data.token}`);

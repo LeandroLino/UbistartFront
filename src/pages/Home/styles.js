@@ -31,7 +31,11 @@ Container.Sign = styled.div`
       width: 50vw;
       left: 25vw;
     }
-
+    @media (max-width: 550px) {
+      width: 70vw;
+      left: 15vw;
+      top: 20vw;
+    }
     top: 15vw;
   }
 

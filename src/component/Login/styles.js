@@ -74,6 +74,9 @@ Container.Inputs = styled.div`
     @media (max-width: 700px) {
       width: 30vw;
     }
+    @media (max-width: 550px) {
+      width: 40vw;
+    }
     border-radius: 5px;
 
     margin-top: 15px;
