@@ -4,12 +4,9 @@ import { ReactComponent as LeftArrow } from "../../assets/ArrowLeft.svg";
 const Container = styled.div`
   background-color: #1d1d1d;
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
+  max-width: 100%;
 
-  padding-top: 3%;
-
-  width: 100vw;
-  height: 40vh;
   display: flex;
   justify-content: space-evenly;
   align-items: center;

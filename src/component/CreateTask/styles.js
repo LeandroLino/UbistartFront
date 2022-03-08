@@ -6,7 +6,7 @@ const Container = styled.div`
   color: #fff;
 
   width: 100vw;
-  height: 104vh;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
   position: absolute;
 
