@@ -15,6 +15,7 @@ const Tasks = ({ openCreateTasks, setCreateTask }) => {
   const [edit, setEdit] = useState(false);
   const [indexToEdit, setEditIndex] = useState(-1);
   const [showAlert, setShowAlert] = useState(false);
+  const [filterOn, setFilter] = useState(false);
 
   const SetDrawer = (status, value) => {
     setOpenDrawer(status);
@@ -40,21 +41,26 @@ const Tasks = ({ openCreateTasks, setCreateTask }) => {
   };
 
   const RemoveRange = () => {
-    from - 3 < count ? setFrom(0) : setFrom(from - 3);
-    from - 3 < count ? setTo(3) : setTo(to - 3);
+    from - Math.ceil(window.screen.width / 300) < count
+      ? setFrom(0)
+      : setFrom(from - 3);
+    from - Math.ceil(window.screen.width / 300) < count
+      ? setTo(3)
+      : setTo(to - 3);
   };
   const AddRange = () => {
-    from + 3 >= count
+    from + Math.ceil(window.screen.width / 300) >= count
       ? count - 3 < 0
         ? setFrom(0)
         : setFrom(count - 3)
       : setFrom(from + 3);
-
-    from + 3 >= count
+    console.log(count);
+    from + Math.ceil(window.screen.width / 300) >= count
       ? count <= 0
         ? setFrom(0)
         : setTo(count)
       : setTo(to + 3);
+    console.log(from);
   };
 
   useEffect(() => {
@@ -62,45 +68,73 @@ const Tasks = ({ openCreateTasks, setCreateTask }) => {
   }, [openCreateTasks]);
 
   useEffect(async () => {
-    const response = await api.listTodos(3, from);
-    console.log(response);
+    console.log(window.screen.width / 300);
+    console.log(window.screen.height / 200);
+
+    const response = await api.listTodos(
+      Math.ceil(window.screen.width / 300),
+      from
+    );
     setCount(response.data.count);
     setTasks(response.data.tasks || []);
   }, [open, from]);
 
+  const returnTask = (value, index) => {
+    return (
+      <Container.Card key={index}>
+        <Task task={value} />
+        <div className="Buttons">
+          <Button
+            onClick={() => SetDrawer(true, value)}
+            disabled={value?.finishedAt != null ? true : false}
+            style={{
+              backgroundColor:
+                value?.finishedAt != null ? "rgba(255,255,255, 0.5)" : "#fff",
+              color: "#000",
+            }}
+          >
+            Edit
+          </Button>
+          <Button
+            classComponent="RedButton"
+            onClick={() => {
+              removeTask(index, false);
+            }}
+            style={{
+              color: "black",
+            }}
+          >
+            Finish
+          </Button>
+        </div>
+      </Container.Card>
+    );
+  };
+
   return (
     <Container>
       <Container.Left onClick={() => RemoveRange()}></Container.Left>
-      {tasks.map((value, index) => (
-        <Container.Card key={index}>
-          <Task task={value} />
-          <div>
-            {console.log(value)}
-            <Button
-              onClick={() => SetDrawer(true, value)}
-              disabled={value?.finishedAt != null ? true : false}
-              style={{
-                backgroundColor:
-                  value?.finishedAt != null ? "rgba(255,255,255, 0.5)" : "#fff",
-                color: "#000",
-              }}
-            >
-              Edit
-            </Button>
-            <Button
-              classComponent="RedButton"
-              onClick={() => {
-                removeTask(index, false);
-              }}
-              style={{
-                color: "black",
-              }}
-            >
-              Finish
-            </Button>
-          </div>
-        </Container.Card>
-      ))}
+      <div className="Filter">
+        <input
+          type="checkbox"
+          onChange={() => setFilter(!filterOn)}
+          checked={filterOn}
+        ></input>
+        Filter Overdue
+      </div>
+      <span className="ContainerCards">
+        {tasks.map((value, index) =>
+          filterOn ? (
+            value.late ? (
+              returnTask(value, index)
+            ) : (
+              <></>
+            )
+          ) : (
+            returnTask(value, index)
+          )
+        )}
+      </span>
       <Container.Right onClick={() => AddRange()}></Container.Right>
       {showAlert && (
         <Container.Confirm>

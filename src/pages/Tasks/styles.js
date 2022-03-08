@@ -2,7 +2,11 @@ import styled from "styled-components";
 import { ReactComponent as RightArrow } from "../../assets/ArrowRight.svg";
 import { ReactComponent as LeftArrow } from "../../assets/ArrowLeft.svg";
 const Container = styled.div`
-  padding-top: 10%;
+  background-color: #1d1d1d;
+  width: 100vw;
+  height: 100vh;
+
+  padding-top: 3%;
 
   width: 100vw;
   height: 40vh;
@@ -13,10 +17,29 @@ const Container = styled.div`
     width: 55px;
     height: 55px;
   }
+  > .Filter {
+    position: absolute;
+    top: 10%;
+
+    font-family: "Maven Pro", sans-serif;
+    color: #fff;
+    font-weight: 800;
+
+    position: absolute;
+    left: 3%;
+  }
+  > .ContainerCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 100%;
+    width: 90%;
+  }
 `;
 Container.Right = styled(RightArrow)`
   position: absolute;
   right: 3%;
+  top: 50%;
   cursor: pointer;
   :hover {
     > circle {
@@ -30,6 +53,8 @@ Container.Right = styled(RightArrow)`
 Container.Left = styled(LeftArrow)`
   position: absolute;
   left: 3%;
+  top: 50%;
+
   cursor: pointer;
   :hover {
     > circle {
@@ -42,11 +67,17 @@ Container.Left = styled(LeftArrow)`
 `;
 
 Container.Card = styled.div`
+  .Buttons {
+    width: 300px;
+  }
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
   > div:last-child {
     display: flex;
     justify-content: space-between;
 
-    margin-top: 15px;
     > button {
       width: 45%;
       height: 4vh;

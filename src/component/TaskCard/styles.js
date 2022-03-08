@@ -4,7 +4,8 @@ const Container = styled.div`
   border-radius: 8px;
 
   width: 300px;
-  height: 150px;
+  height: 200px;
+  margin: 20px;
 
   background-color: rgba(249, 249, 249, 0.14);
   font-family: "Maven Pro", sans-serif;
