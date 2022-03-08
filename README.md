@@ -1,6 +1,6 @@
 # UbistartFront
 
-[Notion](https://www.notion.so/Ubistart-a173c1efa6e24ffe8d5e8b4efb754db4)
+[Notion](https://moored-cloth-8a0.notion.site/Ubistart-a173c1efa6e24ffe8d5e8b4efb754db4)
 
 ## Instalação
 
