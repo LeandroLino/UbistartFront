@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# UbistartFront
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Instalação
 
-In the project directory, you can run:
+Caso vá rodar o projeto usando o [Back-end](https://github.com/LeandroLino/Ubistart-Challenge) você poderá optar por rodar o Front-End utilizando a api
+que já está online, ou usando o rapositório de maneira local, então será necessário mudar algumas informações dentro dos arquivos `.env` e `.en.production`, de acordo com a maneira que você optou. 
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Após baixar todo o arquivo de Front end e descidir qual `API_URL` usar, agora rode o primeiro comando 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```node
+npm install ||  yarn 
+```
+Em seguinda basta iniciar a conexão
+```node
+npm start  ||  yarn start 
+```
+A resposta dada no terminal pode variar de acordo com o comando `yarn` ou `npm`, porem o comportamento será de abrir uma pagina com a url `https://localhost:3000`
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Como a API está hospedada localmente, usaremos rotas de local host com a porta 3000
+## Problmas possiveis
 
-### `npm run build`
+```bash
+Error: listen EADDRINUSE: address already in use :3000
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Tente verificar se existe alguma outra aplicação rodando na porta 3000, caso não consiga achar nenhuma
+aplicação rodando utilize os seguintes comandos
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+fuser -k 3000/tcp
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A resposta desse comando será:
 
-### `npm run eject`
+```bash
+3000/tcp:            <Sequencia Númerica>
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Pronto, será finalizado a aplicação e agora você pode rodar o comando npm novamente
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Se o problema persistir você pode trocar o valor `3000` para algum numero como `5000`/`8080`/`3001`/`3002`, para isso basta mudar no `index.js` na linha `15`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Observações
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Durante o processo de criação eu tive muitas ideias de como melhorar o projeto, pretendo continuar 
+desenvolvendo algumas features, algo que considero válido seria que não só o admin tivesse acesso a todas as tarefas, mas que pessoas que trabalham juntas poderiam compartilhar entre si as tarefas, então um tarefa poderia ter vários usuários com permissões de finalizar e editar, também criar mais `roles` assim teria uma role especifica para monitorar as terafas atrasadas (Admin), uma que teria a permissão para excluir tarefas e assim em diante
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Também seria interessante mudar o layout atual, acredito que seja um layout bem simples e funcional, mas gostaria de passar a ideia de uma ferramenta interna de uma empresa, onde os colegas de trabalho podem análisar suas tarefas, adicionar comentários e vizualizar outras tarefas (De outros colegas). 
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
