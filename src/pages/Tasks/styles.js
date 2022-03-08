@@ -29,6 +29,8 @@ const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+
     height: 100%;
     width: 90%;
   }
@@ -81,6 +83,16 @@ Container.Card = styled.div`
     }
   }
 `;
+
+Container.Loading = styled.div`
+  width: 100%;
+  height: 35px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 Container.Confirm = styled.div`
   font-family: "Maven Pro", sans-serif;
   color: #fff;

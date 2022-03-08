@@ -1,7 +1,6 @@
 import Container from "./styles";
 
 const TaskCard = ({ task }) => {
-  console.log(task);
   return (
     <Container>
       <Container.Texts>Description: {task.description}</Container.Texts>

@@ -2,7 +2,6 @@ import ButtonComponent from "./styles";
 import "./loading.css";
 
 const Button = (props) => {
-  console.log(props);
   return (
     <ButtonComponent
       classComponent={props.classComponent}

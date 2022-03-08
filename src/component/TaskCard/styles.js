@@ -15,6 +15,7 @@ const Container = styled.div`
   align-items: flex-start;
   justify-content: center;
 `;
+
 Container.Buttons = styled.div`
   > img {
     width: 20px;

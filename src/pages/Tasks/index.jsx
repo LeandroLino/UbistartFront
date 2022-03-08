@@ -16,6 +16,7 @@ const Tasks = ({ openCreateTasks, setCreateTask }) => {
   const [indexToEdit, setEditIndex] = useState(-1);
   const [showAlert, setShowAlert] = useState(false);
   const [filterOn, setFilter] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const SetDrawer = (status, value) => {
     setOpenDrawer(status);
@@ -54,13 +55,11 @@ const Tasks = ({ openCreateTasks, setCreateTask }) => {
         ? setFrom(0)
         : setFrom(count - 3)
       : setFrom(from + 3);
-    console.log(count);
     from + Math.ceil(window.screen.width / 300) >= count
       ? count <= 0
         ? setFrom(0)
         : setTo(count)
       : setTo(to + 3);
-    console.log(from);
   };
 
   useEffect(() => {
@@ -68,8 +67,7 @@ const Tasks = ({ openCreateTasks, setCreateTask }) => {
   }, [openCreateTasks]);
 
   useEffect(async () => {
-    console.log(window.screen.width / 300);
-    console.log(window.screen.height / 200);
+    setLoading(true);
 
     const response = await api.listTodos(
       Math.ceil(window.screen.width / 300),
@@ -77,6 +75,7 @@ const Tasks = ({ openCreateTasks, setCreateTask }) => {
     );
     setCount(response.data.count);
     setTasks(response.data.tasks || []);
+    setLoading(false);
   }, [open, from]);
 
   const returnTask = (value, index) => {
@@ -123,15 +122,25 @@ const Tasks = ({ openCreateTasks, setCreateTask }) => {
         Filter Overdue
       </div>
       <span className="ContainerCards">
-        {tasks.map((value, index) =>
-          filterOn ? (
-            value.late ? (
-              returnTask(value, index)
+        {loading ? (
+          <Container.Loading>
+            <div className="balls">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </Container.Loading>
+        ) : (
+          tasks.map((value, index) =>
+            filterOn ? (
+              value.late ? (
+                returnTask(value, index)
+              ) : (
+                <></>
+              )
             ) : (
-              <></>
+              returnTask(value, index)
             )
-          ) : (
-            returnTask(value, index)
           )
         )}
       </span>
