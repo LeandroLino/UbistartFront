@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import CreateTask from "../../component/CreateTask/index.jsx";
 import Button from "../../component/Button/index.jsx";
 import api from "../../api/api";
+import NoData from "../../assets/NoData.svg";
 
 const Tasks = ({ openCreateTasks, setCreateTask }) => {
   const [from, setFrom] = useState(0);
@@ -122,6 +123,12 @@ const Tasks = ({ openCreateTasks, setCreateTask }) => {
         Filter Overdue
       </div>
       <span className="ContainerCards">
+        {count == 0 && !loading && (
+          <span className="NoData">
+            <div>Try create a task!</div>
+            <img src={NoData}></img>
+          </span>
+        )}
         {loading ? (
           <Container.Loading>
             <div className="balls">

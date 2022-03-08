@@ -33,6 +33,23 @@ const Container = styled.div`
 
     height: 100%;
     width: 90%;
+    > .NoData {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      font-family: "Maven Pro", sans-serif;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.4em;
+      > img {
+        width: 150px;
+        height: 150px;
+        user-select: none;
+      }
+    }
   }
 `;
 Container.Right = styled(RightArrow)`
