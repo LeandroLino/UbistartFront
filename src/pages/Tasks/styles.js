@@ -48,6 +48,7 @@ const Container = styled.div`
         width: 150px;
         height: 150px;
         user-select: none;
+        pointer-events: none;
       }
     }
   }

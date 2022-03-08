@@ -11,6 +11,8 @@ Container.Blob = styled.div`
     position: absolute;
     overflow: hidden;
     height: 90vh;
+    user-select: none;
+    pointer-events: none;
   }
 
   width: 40%;
