@@ -1,5 +1,6 @@
 # UbistartFront
 
+[Notion](https://www.notion.so/Ubistart-a173c1efa6e24ffe8d5e8b4efb754db4)
 
 ## Instalação
 
